@@ -22,7 +22,7 @@ Tracker that allows you to enter new or continue old workouts. A dashboard is th
 <ul> <li> Navigate to <a href ="https://warm-river-53490.herokuapp.com/"> Heroku Deployed App </a> </li> </ul>
     
 ## Usage
-Choose new exercise or continue a previous workout <br>
+Choose <b>New Exercise</b> or <b>Continue Workout</b> <br>
 Enter workout data on the form, then select <b> Add Exercise </b> to post workout information <br> 
 When finished select <b> Complete </b> to return back to the homepage <br>
 Select <b> Dashboard </b> to see the fitness track graphs
