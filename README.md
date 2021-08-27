@@ -26,7 +26,7 @@ Choose new exercise or continue a previous workout <br>
 Enter workout data on the form, then select <b> Add Exercise </b> to post workout information <br> 
 When finished select <b> Complete </b> to return back to the homepage <br>
 Select <b> Dashboard </b> to see the fitness track graphs
-![giphy](./assets/Tracker.gif)
+![giphy](./Assets/Tracker.gif)
 
 ## License [![License](https://img.shields.io/badge/License-MIT-pink.svg)](https://opensource.org/licenses/MIT)
 <h3> MIT: </h3>
