@@ -6,10 +6,12 @@ router.get('/', (req, res) => {
 })
 
 router.get('/exercise', (req, res) => {
-    //sendfile, public stats html file
+    //sendfile, public exercise html file
 })
 
-router.get('/stats';
+router.get('/stats', (req, res) => {
+    //sendfile, public stats html file
+})
 
 
 module.exports = router;
