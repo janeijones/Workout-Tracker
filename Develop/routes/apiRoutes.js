@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const db = require('../models');
-const mongojs = require('mongojs');
 
 
 router.get('/workouts', (req, res) => { //gets last workout
@@ -13,28 +12,28 @@ router.get('/workouts', (req, res) => { //gets last workout
         },
       },
     ])
-    .then(Data => { //respond with workout handling
-      res.json(Data);
+    .then(workoutData => { //respond with workout handling
+      res.json(workoutData);
     })
     .catch((err) => {  //error handling
         res.status(500).json(err) 
     });
 });
 
-router.post('/workouts', (req, res) => { //creates workout
-    db.Workout.create(req.body)
+router.post('/workouts', (req, res) => { 
+    //creates workout
+    db.Workout.create({})
   .then(dbWorkout => {
     res.json(dbWorkout)
-    //console.log(dbWorkout)
   }) 
   .catch(err => {
     //error handling
-    res.json(err);
+    res.send(err);
   });
 });
 
 
-router.put("/workouts/:id", (req, res) => { //addds individual workout
+router.put("/workouts/:id", (req, res) => { //updates individual workout
     //const body = req.body
     //console.log("Body" + body)
 
@@ -48,17 +47,44 @@ db.Workout.findByIdAndUpdate(
       runValidators: true
     }
   )
-  .then(Data => {
-    res.json(Data); //respond with workout data
+  .then(workoutData => {
+    res.json(workoutData); //respond with workout data
   })
   .catch((err) => {
     //error handling
+    console.log("Error"+ err)
     res.status(500).json(err)
   });
 }); 
 
 
-router.get() //- workouts in Range
+router.get('/workouts/range', (req, res) => {
+
+    db.Workout.aggregate([{
+          $addFields: {
+            totalDuration: {
+              $sum: '$exercises.duration',
+            },
+          },
+        },
+        {
+          $addFields: {
+            totalWeight: {
+              $sum: '$exercises.weight',
+            },
+          },
+        }
+      ])
+      .then(workoutData => {
+          //respond with workout data
+        res.json(workoutData);
+      })
+      .catch((err) => {
+      //error handling
+        res.status(500).json(err)
+      });
+  });
+   //- workouts in Range
 
 
 module.exports = router;
