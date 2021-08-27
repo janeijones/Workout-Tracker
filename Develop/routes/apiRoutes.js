@@ -3,7 +3,7 @@ const db = require('../models');
 const mongojs = require('mongojs');
 
 
-router.get('/workouts', (req, res) => {
+router.get('/workouts', (req, res) => { //gets last workout
     db.Workout.aggregate([ //aggregate used for values
       {
         $addFields: {
@@ -18,10 +18,21 @@ router.get('/workouts', (req, res) => {
     })
     .catch((err) => {  //error handling
         res.status(500).json(err) 
-    })
+    });
 });
 
-router.post() //- workouts
+router.post('/workouts', (req, res) => { //creates workout
+    db.Workout.create(req.body)
+  .then(dbWorkout => {
+    res.json(dbWorkout)
+    //console.log(dbWorkout)
+  }) 
+  .catch(err => {
+    //error handling
+    res.json(err);
+  });
+});
+
 
 router.put() //- workouts by id
 
