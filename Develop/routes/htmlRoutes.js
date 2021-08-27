@@ -2,7 +2,8 @@ const router = require('express').Router()
 const path = require('path')
 
 router.get('/', (req, res) => {
-    //sendfile, public index html file
+    //allows use of public index html file
+    res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
 router.get('/exercise', (req, res) => {
