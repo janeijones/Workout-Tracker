@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 router.get('/exercise', (req, res) => {
     //allows use of public exercise html file
     res.sendFile(path.join(__dirname, '../public/exercise.html'))
-})
+});
 
 router.get('/stats', (req, res) => {
-    //sendfile, public stats html file
-})
+    res.sendFile(path.join(__dirname, '../public/stats.html'))
+});
 
 
 module.exports = router;
